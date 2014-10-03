@@ -4,46 +4,66 @@ java 8 changes
 # API modifications
 
 ## New packages
+```
+java.time
 java.util.function
 java.util.stream
+```
 
 ## New classes
+```
 java.util.concurrent.locks.StampedLock
 java.util.Base64
+java.util.Optional
 java.util.Spliterators
 
 java.util.concurrent.atomic.DoubleAccumulator
 java.util.concurrent.atomic.DoubleAdder
 java.util.concurrent.atomic.LongAccumulator
 java.util.concurrent.atomic.LongAdder
-
+java.util.concurrent.CompletableFuture
+java.util.concurrent.CountedCompleter
+```
 
 ## New interfaces
+```
 public interface Function<T, R>
 public interface Predicate<T>
 public interface Spliterator<T>
+public interface PrimitiveIterator<T, T_CONS> extends Iterator<T>
+```
 
 ## New annotations
+```
 public @interface FunctionalInterface {}
+```
 
 ## Iterator
+```
 default void remove()
 default void forEachRemaining(Consumer<? super E> action)
+```
 
 ## Iterable
+```
 default void forEach(Consumer<? super T> action)
 default Spliterator<T> spliterator()
+```
 
 ## Collection
+```
 default boolean removeIf(Predicate<? super E> filter)
 default Spliterator<E> spliterator()
 default Stream<E> stream()
 default Stream<E> parallelStream()
+```
 
 ## List
+```
 default void replaceAll(UnaryOperator<E> operator)
 default void sort(Comparator<? super E> c)
 default Spliterator<E> spliterator()
+```
 
 ## Map
 ```java
@@ -61,11 +81,14 @@ default V merge(K key, V value, BiFunction<? super V, ? super V, ? extends V> re
 ```
 
 ## java.util.Objects
+```
 public static boolean isNull(Object obj)
 public static boolean nonNull(Object obj)
 public static <T> T requireNonNull(T obj, Supplier<String> messageSupplier)
+```
 
 ## java.util.concurrent.ConcurrentHashMap
+```
 public long mappingCount()
 public static <K> KeySetView<K,Boolean> newKeySet()
 public static <K> KeySetView<K,Boolean> newKeySet(int initialCapacity)
@@ -99,8 +122,10 @@ public <U> U reduceEntries(long parallelismThreshold, Function<Map.Entry<K,V>, ?
 public double reduceEntriesToDouble(long parallelismThreshold, ToDoubleFunction<Map.Entry<K,V>> transformer, double basis, DoubleBinaryOperator reducer)
 public long reduceEntriesToLong(long parallelismThreshold, ToLongFunction<Map.Entry<K,V>> transformer, long basis, LongBinaryOperator reducer)
 public int reduceEntriesToInt(long parallelismThreshold, ToIntFunction<Map.Entry<K,V>> transformer, int basis, IntBinaryOperator reducer)
+```
 
 ## java.util.Comparator
+```
 default Comparator<T> reversed()
 default Comparator<T> thenComparing(Comparator<? super T> other)
 default <U> Comparator<T> thenComparing( Function<? super T, ? extends U> keyExtractor, Comparator<? super U> keyComparator)
@@ -117,8 +142,10 @@ public static <T, U extends Comparable<? super U>> Comparator<T> comparing(Funct
 public static <T> Comparator<T> comparingInt(ToIntFunction<? super T> keyExtractor)
 public static <T> Comparator<T> comparingLong(ToLongFunction<? super T> keyExtractor)
 public static<T> Comparator<T> comparingDouble(ToDoubleFunction<? super T> keyExtractor)
+```
 
 # java.lang.Long
+```
 public static String toUnsignedString(long i, int radix)
 public static String toUnsignedString(long i)
 public static long parseUnsignedLong(String s, int radix) throws NumberFormatException
@@ -130,8 +157,10 @@ public static long remainderUnsigned(long dividend, long divisor)
 public static long sum(long a, long b)
 public static long max(long a, long b)
 public static long min(long a, long b)
+```
 
 # java.util.Arrays
+```
 public static void parallelSort(byte[] a)
 public static void parallelSort(byte[] a, int fromIndex, int toIndex) 
 public static void parallelSort(char[] a)
@@ -165,9 +194,10 @@ public static <T> Stream<T> stream(T[] array, int startInclusive, int endExclusi
 public static IntStream stream(int[] array)
 public static IntStream stream(int[] array, int startInclusive, int endExclusive)
 ...
-
+```
 
 ## java.util.Collections
+```
 public static <T> NavigableSet<T> unmodifiableNavigableSet(NavigableSet<T> s)
 public static <K,V> NavigableMap<K,V> unmodifiableNavigableMap(NavigableMap<K, ? extends V> m)
 public static <T> NavigableSet<T> synchronizedNavigableSet(NavigableSet<T> s)
@@ -179,4 +209,84 @@ public static <E> SortedSet<E> emptySortedSet()
 public static <E> NavigableSet<E> emptyNavigableSet()
 public static final <K,V> SortedMap<K,V> emptySortedMap()
 public static final <K,V> NavigableMap<K,V> emptyNavigableMap()
+```
+
+### java.lang.Boolean
+```
+public static int hashCode(boolean value)
+public static boolean logicalAnd(boolean a, boolean b)
+public static boolean logicalOr(boolean a, boolean b)
+public static boolean logicalXor(boolean a, boolean b)
+```
+
+### java.lang.Byte
+```
+public static int hashCode(byte value)
+public static int toUnsignedInt(byte x)
+public static long toUnsignedLong(byte x)
+```
+
+### java.lang.Character
+```
+public static int hashCode(char value)
+```
+
+### java.lang.Class
+```
+public String toGenericString()
+public String getTypeName()
+public <A extends Annotation> A[] getAnnotationsByType(Class<A> annotationClass)
+public <A extends Annotation> A getDeclaredAnnotation(Class<A> annotationClass)
+public <A extends Annotation> A[] getDeclaredAnnotationsByType(Class<A> annotationClass)
+public AnnotatedType getAnnotatedSuperclass()
+public AnnotatedType[] getAnnotatedInterfaces()
+```
+
+### java.lang.String
+```
+public static String join(CharSequence delimiter, CharSequence... elements)
+public static String join(CharSequence delimiter, Iterable<? extends CharSequence> elements)
+```
+
+### java.lang.StringBuffer
+```
+synchronized StringBuffer append(AbstractStringBuilder asb)
+```
+
+### java.lang.ThreadLocal
+```
+public static <S> ThreadLocal<S> withInitial(Supplier<? extends S> supplier)
+```
+
+### java.lang.BitSet
+```
+public IntStream stream()
+```
+
+### java.util.Calendar
+```
+Calendar.Builder.
+public static Set<String> getAvailableCalendarTypes()
+public String getCalendarType()
+public final Instant toInstant()
+```
+
+### java.util.Date
+```
+public static Date from(Instant instant)
+public Instant toInstant()
+```
+
+### java.util.concurrent.Executors
+```
+public static ExecutorService newWorkStealingPool(int parallelism)
+public static ExecutorService newWorkStealingPool()
+```
+
+### java.util.concurrent.ForkJoinPool
+```
+public static ForkJoinPool commonPool()
+public static int getCommonPoolParallelism()
+```
+
 
