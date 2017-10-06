@@ -20,12 +20,14 @@ CMD ["java", "-version"]
 ```
 
 ## 2 Create custom runtime
+```
 docker run --rm --volume $PWD:/out jdk-9 \
   jlink --module-path /opt/jdk-9/jmods --verbose \
     --add-modules java.base \
     --compress 2 \
     --no-header-files \
     --output /out/jdk-9-base
+```
 
 ## 3 Package custom runtime
 Dockerfile.custom
