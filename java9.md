@@ -32,7 +32,7 @@ docker run --rm --volume $PWD:/out jdk-9 \
 ## 3 Package custom runtime
 Dockerfile.custom
 ```
-FROM debian:17.10
+FROM ubuntu:17.10
 
 ADD jdk-9-base /opt/jdk-9
 
