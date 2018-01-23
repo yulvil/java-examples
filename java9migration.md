@@ -7,6 +7,8 @@
 
 [3rd party libraries status](https://wiki.openjdk.java.net/display/quality/Quality+Outreach)
 
+[Maven - Older projects with module-info](https://maven.apache.org/plugins/maven-compiler-plugin/examples/module-info.html)
+
 # JAXB
 
 Module java.xml.bind (JAXB) is deprecated and subject to removal
